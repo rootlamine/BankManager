@@ -12,7 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comptes', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->string('numero_compte')->unique();
+            $table->string('titulaire');
+            $table->enum('type', ['epargne', 'cheque']);
+            $table->enum('status', ['actif', 'bloque', 'suspendu', 'archive'])->default('actif');
+            $table->foreignUuid('utilisateur_id')->constrained('utilisateurs')->onDelete('cascade');
             $table->timestamps();
         });
     }
