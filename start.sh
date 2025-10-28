@@ -20,7 +20,7 @@ php artisan view:cache
 
 # 3. Exécution des Migrations
 echo "Exécution des migrations de base de données..."
-php artisan migrate --force
+php artisan migrate --force --seed
 
 # 4. Lancement du Serveur Web (pour la portabilité locale et Render)
 echo "Démarrage du serveur PHP intégré sur le port Render ($PORT)..."
