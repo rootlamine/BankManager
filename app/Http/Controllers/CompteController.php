@@ -13,7 +13,7 @@ class CompteController extends Controller
      */
     public function index()
     {
-        //
+        return Compte::paginate();
     }
 
     /**
@@ -21,7 +21,7 @@ class CompteController extends Controller
      */
     public function store(StoreCompteRequest $request)
     {
-        //
+
     }
 
     /**
@@ -29,7 +29,7 @@ class CompteController extends Controller
      */
     public function show(Compte $compte)
     {
-        //
+        
     }
 
     /**
