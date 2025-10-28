@@ -13,7 +13,7 @@ class CompteController extends Controller
      */
     public function index()
     {
-        return Compte::paginate();
+        return Compte::all();
     }
 
     /**
@@ -29,7 +29,7 @@ class CompteController extends Controller
      */
     public function show(Compte $compte)
     {
-        
+
     }
 
     /**
