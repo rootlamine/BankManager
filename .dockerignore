@@ -2,7 +2,6 @@
 .git
 .gitignore
 .dockerignore
-Dockerfile
 docker-compose.yml
 
 # Ignore Node/npm/yarn stuff
@@ -13,19 +12,41 @@ yarn-error.log
 package-lock.json
 
 # Ignore Laravel cache and logs
-storage/logs
-storage/framework/cache
-storage/framework/sessions
-storage/framework/views
-bootstrap/cache
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+bootstrap/cache/*
+
+# Keep .gitkeep files
+!storage/logs/.gitkeep
+!storage/framework/cache/.gitkeep
+!storage/framework/sessions/.gitkeep
+!storage/framework/views/.gitkeep
+!bootstrap/cache/.gitkeep
 
 # Ignore local environment and vendor
 .env
-.env.local
+.env.*
+*.env
+!.env.example
 vendor
+
+# Ignore local Docker volumes
+data_laravel
+pgadmin_data
+
+# Ignore tests
+tests
+.phpunit.result.cache
+phpunit.xml
 
 # Ignore IDE / OS files
 .idea
 .vscode
 .DS_Store
 Thumbs.db
+
+# Ignore documentation
+README.md
+*.md
