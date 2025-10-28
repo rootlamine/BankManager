@@ -17,6 +17,5 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/pgadmin_data
-/data_laravel
 docker-compose.yml
+.env.local

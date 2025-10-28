@@ -1,0 +1,32 @@
+# Utilise l'image PHP de base avec FPM
+FROM php:8.3-fpm
+
+# Installe les dépendances système nécessaires
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    libpq-dev \
+    # Ajout d'outils de debug (nano)
+    nano \
+    && rm -rf /var/lib/apt/lists/*
+
+# Installe l'extension pdo_pgsql pour PostgreSQL
+RUN docker-php-ext-install pdo_pgsql
+
+# Installe Composer (le gestionnaire de dépendances PHP)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+# Définit le répertoire de travail dans le conteneur
+WORKDIR /var/www/html
+
+COPY dev_start.sh /usr/local/bin/dev_start.sh
+RUN chmod +x /usr/local/bin/dev_start.sh
+
+# Le conteneur exécute le script au démarrage
+CMD ["/usr/local/bin/dev_start.sh"]
+
+# *** COMMANDE DE DÉMARRAGE AUTOMATIQUE ***
+# Lance le serveur 'php artisan serve' automatiquement au démarrage du conteneur.
+# Cela évite la commande "docker compose exec app php artisan serve..." manuelle.
+#CMD ["php", "artisan", "serve", "--host", "0.0.0.0", "--port", "8000"]
+# CMD ["/bin/bash", "-c", "tail -f /dev/null"]
