@@ -13,7 +13,7 @@ class CompteController extends Controller
      */
     public function index()
     {
-        return Compte::all();
+        return Compte::paginate();
     }
 
     /**

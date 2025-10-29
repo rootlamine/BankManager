@@ -68,7 +68,7 @@ pipeline {
                     variable: 'RENDER_WEBHOOK_URL'
                 )]) {
                     echo "--- 5. Triggering Render deployment via Webhook ---"
-                    // Envoi du signal POST à Render. Render va chercher l'image :latest.
+                    // Envoi du signal POST à Render. Render va chercher l'image :latest c'est notre reference.
                     sh "curl -X POST -H 'Content-Type: application/json' ${RENDER_WEBHOOK_URL}"
                 }
             }
